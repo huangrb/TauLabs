@@ -92,7 +92,7 @@ int32_t AutotuneStart(void)
 {
 	// Start main task if it is enabled
 	if(module_enabled) {
-		xTaskCreate(AutotuneTask, (signed char *)"Autotune", STACK_SIZE_BYTES/4, NULL, TASK_PRIORITY, &taskHandle);
+		xTaskCreate(AutotuneTask, (signed char *)"Autotune", STACK_SIZE_BYTES/2, NULL, TASK_PRIORITY, &taskHandle);
 
 		TaskMonitorAdd(TASKINFO_RUNNING_AUTOTUNE, taskHandle);
 		PIOS_WDG_RegisterFlag(PIOS_WDG_AUTOTUNE);

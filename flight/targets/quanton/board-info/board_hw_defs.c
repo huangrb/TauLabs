@@ -206,6 +206,7 @@ void PIOS_SPI_flash_irq_handler(void)
 }
 
 
+
 /* SPI1 Interface
  *      - Used for gyro communications
  */
@@ -587,7 +588,7 @@ static const struct flashfs_logfs_cfg flashfs_waypoints_cfg = {
 static const struct pios_flash_jedec_cfg flash_mx25_cfg = {
 	.expect_manufacturer = JEDEC_MANUFACTURER_MACRONIX,
 	.expect_memorytype   = 0x20,
-	.expect_capacity     = 0x16,
+	.expect_capacity     = 0x17,
 	.sector_erase        = 0x20,
 };
 #endif	/* PIOS_INCLUDE_FLASH_JEDEC */
@@ -635,7 +636,7 @@ static const struct pios_flash_chip pios_flash_chip_internal = {
 static const struct pios_flash_sector_range mx25_sectors[] = {
 	{
 		.base_sector = 0,
-		.last_sector = 1023,
+		.last_sector = 2047,
 		.sector_size = FLASH_SECTOR_4KB,
 	},
 };
@@ -690,9 +691,9 @@ static const struct pios_flash_partition pios_flash_partition_table[] = {
 		.label        = FLASH_PARTITION_LABEL_WAYPOINTS,
 		.chip_desc    = &pios_flash_chip_external,
 		.first_sector = 512,
-		.last_sector  = 1023,
+		.last_sector  = 2047,
 		.chip_offset  = (512 * FLASH_SECTOR_4KB),
-		.size         = (1023 - 512 + 1) * FLASH_SECTOR_4KB,
+		.size         = (2047 - 512 + 1) * FLASH_SECTOR_4KB,
 	},
 #endif	/* PIOS_INCLUDE_FLASH_JEDEC */
 };
