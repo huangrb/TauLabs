@@ -854,6 +854,14 @@ void PIOS_Board_Init(void) {
 		case BOARD_REVISION_CC3D:
 			// Revision 2 with L3GD20 gyros, start a SPI interface and connect to it
 			GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
+
+#if defined(PIOS_INCLUDE_ADC)
+		
+			uint32_t internal_adc_id;
+			PIOS_INTERNAL_ADC_Init(&internal_adc_id, &internal_adc_cfg);
+			PIOS_ADC_Init(&pios_internal_adc_id, &pios_internal_adc_driver, internal_adc_id);
+		
+#endif
 #if defined(PIOS_INCLUDE_MPU6000)
 			// Set up the SPI interface to the serial flash 
 			if (PIOS_SPI_Init(&pios_spi_gyro_id, &pios_spi_gyro_cfg)) {

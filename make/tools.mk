@@ -494,7 +494,7 @@ endif
 
 ifeq ($(shell [ -d "$(ANDROID_SDK_DIR)" ] && echo "exists"), exists)
   ANDROID     := $(ANDROID_SDK_DIR)/tools/android
-  ANDROID_DX  := $(ANDROID_SDK_DIR)/platform-tools/dx
+  ANDROID_DX  := $(ANDROID_SDK_DIR)/build-tools/18.1.1/dx
   ANDROID_ADB := $(ANDROID_SDK_DIR)/platform-tools/adb
 else
   # not installed, hope it's in the path...
